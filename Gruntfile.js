@@ -3,6 +3,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['hrsf71-shortly-deploy/**/*.js'],
+        dest: 'dist/built.js',
+      },
     },
 
     mochaTest: {
@@ -21,15 +28,18 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+
     },
 
     eslint: {
       target: [
+
         // Add list of files to lint here
       ]
     },
 
     cssmin: {
+
     },
 
     watch: {
@@ -88,6 +98,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
+    'concat', 'uglify', 'eslint', 'test'
     // add your deploy tasks here
   ]);
 
