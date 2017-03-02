@@ -7,8 +7,8 @@ module.exports = function(grunt) {
         separator: ';',
       },
       dist: {
-        src: ['hrsf71-shortly-deploy/**/*.js'],
-        dest: 'dist/built.js',
+        src: ['public/**/*.js'],
+        dest: 'public/dist/built.js',
       },
     },
 
@@ -28,12 +28,19 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-
+      myTarget: {
+        files: {
+          'public/dist/built.min.js': ['public/dist/built.js']
+        }
+      }
     },
 
     eslint: {
+      options: {
+        quiet: true
+      },
       target: [
-
+        '**/*.js'
         // Add list of files to lint here
       ]
     },
