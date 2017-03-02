@@ -38,3 +38,7 @@ window.Shortly = Backbone.View.extend({
       .addClass('selected');
   }
 });
+
+// username: root
+// ???
+// password: Shortly1
