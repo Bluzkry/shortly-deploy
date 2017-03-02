@@ -67,6 +67,13 @@ module.exports = function(grunt) {
     },
 
     shell: {
+        multiple: {
+          command: [
+            'git add .',
+            'git commit -m \'Update code\'',
+            'git push live master'
+          ].join('&&')
+        },
       prodServer: {
       }
     },
