@@ -41,7 +41,6 @@ module.exports = function(grunt) {
       },
       target: [
         '**/*.js'
-        // Add list of files to lint here
       ]
     },
 
@@ -74,9 +73,6 @@ module.exports = function(grunt) {
           'git push live master'
         ].join('&&')
       }
-        // ,
-      // prodServer: {
-      // }
     },
   });
 
@@ -106,16 +102,13 @@ module.exports = function(grunt) {
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
-      // add your production server task here
+      grunt.task.run(['shell'])
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
   });
 
-  grunt.registerTask('deploy', [
-    'concat', 'uglify', 'eslint', 'test'
-    // add your deploy tasks here
-  ]);
-
-
+  grunt.registerTask('deploy',
+      ['concat', 'uglify', 'eslint', 'test']
+  );
 };
