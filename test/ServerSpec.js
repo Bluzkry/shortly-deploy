@@ -245,4 +245,39 @@ describe('', function() {
   }); // Account Login
   //acounts need log in out something test
 
+  describe('Account Logout', function() {
+    beforeEach(function(done) {
+      new User({
+        'username': 'Phillip',
+        'password': 'Phillip'
+      }).save(function() {
+        request(app)
+          .post('/login')
+          .send({
+            'username': 'Phillip',
+            'password': 'Phillip'
+          })
+          .end(done);
+      });
+    });
+
+    it('Sends user to login page', function(done) {
+      request(app)
+      .get('/logout')
+      .expect(function(res) {
+        expect(res.headers.location).to.equal('/login');
+      })
+      .end(done);
+    });
+
+    it('Redirects users to login page if a user tries to access the main page after logging out', function(done) {
+      request(app)
+      .get('/links')
+      .expect(function(res) {
+        expect(res.headers.location).to.equal('/login');
+      })
+      .end(done);
+    });
+  });
+
 });
